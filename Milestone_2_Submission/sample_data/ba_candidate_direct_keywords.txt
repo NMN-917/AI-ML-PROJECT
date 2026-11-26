@@ -1,0 +1,13 @@
+Candidate Name: Ananya Sen
+Role: IT Business Analyst
+Email: ananya.sen@example.com
+
+PROFESSIONAL SUMMARY:
+IT Business Analyst and Certified Scrum Master with 6 years of experience in Banking and Healthcare. Skilled in requirement gathering, creating BRDs, FRDs, and user stories. Experienced in facilitating Agile Scrum ceremonies and conducting User Acceptance Testing (UAT). Proficient in Jira and SQL.
+
+EXPERIENCE:
+Business Analyst | FinCorp Global (2020 - Present)
+- Gathered, analyzed, and documented business and functional requirements (BRDs, FRDs, User Stories).
+- Facilitated Scrum ceremonies including Sprint Planning, Daily Standups, and Sprint Retrospectives.
+- Conducted User Acceptance Testing (UAT) and gap analysis to ensure alignment with stakeholder goals.
+- Created workflow diagrams and verified client data using SQL queries in Jira and Confluence.

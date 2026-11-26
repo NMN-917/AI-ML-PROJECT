@@ -1,0 +1,24 @@
+John Doe
+Software Engineer
+
+Summary:
+Passionate software developer with 3 years of experience building web applications.
+Led a team of 5 engineers to deliver a customer-facing dashboard on time.
+Strong background in Python programming, data analysis, and cloud computing.
+
+Skills:
+- Python, JavaScript, SQL
+- Machine Learning and Data Science
+- REST API development
+- Team leadership and project management
+- AWS cloud services (EC2, S3, Lambda)
+
+Experience:
+Software Developer at TechCorp (2023-2026)
+- Built and maintained RESTful APIs serving 10,000+ daily users
+- Implemented machine learning models for product recommendation
+- Collaborated with cross-functional teams including design and product
+- Mentored 2 junior developers on best coding practices
+
+Education:
+Bachelor of Science in Computer Science, State University, 2023

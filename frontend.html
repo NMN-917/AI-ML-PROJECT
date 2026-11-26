@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RESUMATCH | AI-Driven Semantic Resume–Job Matching System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --border-focus: #3b82f6;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --text-dark: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --warning: #d97706;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+
+    /* Top Navigation Bar */
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      background: #1e3a8a;
+      color: #ffffff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .nav-tag {
+      font-size: 12px;
+      color: var(--primary);
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Main Layout */
+    .main-container {
+      max-width: 1080px;
+      width: 100%;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Page Header */
+    .page-header {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 22px 24px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .page-header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .page-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Benchmark Selector Toolbar */
+    .benchmark-bar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px 16px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .benchmark-title {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .btn-test {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-test:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    /* Tabs */
+    .tabs-header {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      gap: 8px;
+    }
+
+    .tab-item {
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      background: transparent;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .tab-item.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* Input Grid */
+    .grid-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .input-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .card-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-label .sub {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    textarea {
+      width: 100%;
+      height: 220px;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-dark);
+      resize: vertical;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    }
+
+    /* Upload Zone */
+    .upload-box {
+      border: 2px dashed #cbd5e1;
+      border-radius: 6px;
+      padding: 30px 16px;
+      text-align: center;
+      background: #f8fafc;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .upload-box:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    .upload-icon {
+      font-size: 24px;
+      color: var(--primary);
+    }
+
+    .upload-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .upload-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .file-name-pill {
+      font-size: 12px;
+      color: #0369a1;
+      background: #e0f2fe;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 500;
+      display: none;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    /* Action Button */
+    .action-row {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-submit {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 11px 26px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.15s ease;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-submit:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    /* Results Section */
+    #results-panel {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+      border-top: 2px solid var(--border-color);
+      padding-top: 24px;
+    }
+
+    .results-heading {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .results-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .results-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .score-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .score-card.primary-model {
+      border-top: 4px solid var(--primary);
+    }
+
+    .score-card.baseline-model {
+      border-top: 4px solid var(--warning);
+    }
+
+    .model-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .model-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .model-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .model-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .badge-baseline {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .badge-primary {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .score-display {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .score-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .score-status {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: #f1f5f9;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar-val {
+      height: 100%;
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+
+    .bar-baseline {
+      background: #f59e0b;
+    }
+
+    .bar-primary {
+      background: #2563eb;
+    }
+
+    /* Explanation & Key Observation */
+    .analysis-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .analysis-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .analysis-body {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .delta-callout {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: #eff6ff;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 4px 4px 0;
+      font-size: 13px;
+      color: #1e3a8a;
+    }
+
+    .delta-callout b {
+      font-weight: 600;
+    }
+
+    /* Hiring Qualification Banner */
+    .decision-card {
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      margin-bottom: 6px;
+    }
+
+    .decision-card.status-selected {
+      background: #f0fdf4;
+      border: 1.5px solid #22c55e;
+      color: #14532d;
+    }
+
+    .decision-card.status-borderline {
+      background: #fffbeb;
+      border: 1.5px solid #f59e0b;
+      color: #78350f;
+    }
+
+    .decision-card.status-rejected {
+      background: #fef2f2;
+      border: 1.5px solid #ef4444;
+      color: #7f1d1d;
+    }
+
+    .decision-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .decision-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .status-selected .decision-badge {
+      background: #15803d;
+      color: #ffffff;
+    }
+
+    .status-borderline .decision-badge {
+      background: #d97706;
+      color: #ffffff;
+    }
+
+    .status-rejected .decision-badge {
+      background: #b91c1c;
+      color: #ffffff;
+    }
+
+    .decision-status {
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .decision-message {
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    /* Spinner */
+    .spinner-sm {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="brand-logo">RM</div>
+      <div>
+        <div class="brand-title">RESUMATCH</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">AI-Driven Semantic Resume–Job Matcher</div>
+      </div>
+      <span class="nav-tag">Milestone 2</span>
+    </div>
+    <div class="nav-links">
+      <span>Bennett University — CSE Dept</span>
+      <a href="/docs" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 500;">API Docs (Swagger)</a>
+    </div>
+  </nav>
+
+  <div class="main-container">
+
+    <!-- Header Description -->
+    <div class="page-header">
+      <h1>Model Evaluation & Inference Dashboard</h1>
+      <p>
+        Evaluating lexical matching (TF-IDF Baseline) against contextual sentence embeddings (Sentence-Transformers <code>all-MiniLM-L6-v2</code>) on candidate resumes and job postings.
+      </p>
+    </div>
+
+    <!-- Benchmark Quick Loaders -->
+    <div class="benchmark-bar">
+      <span class="benchmark-title">Load Test Case:</span>
+      <button class="btn-test" onclick="loadAdityaSimple()">1. Aditya (Exact Keywords)</button>
+      <button class="btn-test" onclick="loadAdityaSynonyms()">2. Aditya (Synonym Sensitivity Test)</button>
+      <button class="btn-test" onclick="loadDefaultSample()">3. Software Engineer Sample</button>
+    </div>
+
+    <!-- Input Mode Tabs -->
+    <div class="tabs-header">
+      <button class="tab-item active" id="tab-text" onclick="setTab('text')">Direct Text Input</button>
+      <button class="tab-item" id="tab-files" onclick="setTab('files')">File Upload (.pdf / .docx / .txt)</button>
+    </div>
+
+    <!-- Mode 1: Text -->
+    <div id="section-text" class="grid-two-col">
+      <div class="input-card">
+        <div class="card-label">
+          <span>Candidate Resume</span>
+          <span class="sub">Plain text</span>
+        </div>
+        <textarea id="input-resume" placeholder="Paste candidate resume content here..."></textarea>
+      </div>
+
+      <div class="input-card">
+        <div class="card-label">
+          <span>Job Description</span>
+          <span class="sub">Target role</span>
+        </div>
+        <textarea id="input-job" placeholder="Paste target job description here..."></textarea>
+      </div>
+    </div>
+
+    <!-- Mode 2: Files -->
+    <div id="section-files" class="grid-two-col" style="display: none;">
+      <div class="input-card">
+        <div class="card-label">
+          <span>Resume Document</span>
+          <span class="sub">PDF or Word</span>
+        </div>
+        <div class="upload-box" onclick="document.getElementById('file-resume').click()">
+          <div class="upload-icon">📄</div>
+          <div class="upload-text">Select Resume Document</div>
+          <div class="upload-sub">Supports .pdf, .docx, and .txt files</div>
+          <div class="file-name-pill" id="label-resume-file">Selected: None</div>
+        </div>
+        <input type="file" id="file-resume" accept=".pdf,.docx,.txt" onchange="fileChosen('resume')">
+      </div>
+
+      <div class="input-card">
+        <div class="card-label">
+          <span>Job Description Document</span>
+          <span class="sub">PDF or Word</span>
+        </div>
+        <div class="upload-box" onclick="document.getElementById('file-job').click()">
+          <div class="upload-icon">📋</div>
+          <div class="upload-text">Select Job Description Document</div>
+          <div class="upload-sub">Supports .pdf, .docx, and .txt files</div>
+          <div class="file-name-pill" id="label-job-file">Selected: None</div>
+        </div>
+        <input type="file" id="file-job" accept=".pdf,.docx,.txt" onchange="fileChosen('job')">
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="action-row">
+      <button class="btn-submit" id="submit-btn" onclick="runMatching()">
+        <span>Run Comparison</span>
+      </button>
+    </div>
+
+    <!-- Results Panel -->
+    <div id="results-panel">
+      <div class="results-heading">Model Comparison Results</div>
+
+      <!-- Hiring Qualification & Selection Banner -->
+      <div id="decision-banner" class="decision-card status-selected">
+        <div class="decision-header">
+          <div class="decision-badge" id="decision-badge">QUALIFIED & SHORTLISTED FOR INTERVIEW</div>
+          <div class="decision-status" id="decision-status">Status: Selected for Next Round</div>
+        </div>
+        <div class="decision-message" id="decision-message">
+          Loading hiring recommendation...
+        </div>
+      </div>
+
+      <div class="results-cards">
+        
+        <!-- Baseline Card -->
+        <div class="score-card baseline-model">
+          <div class="model-header">
+            <div>
+              <div class="model-title">TF-IDF + Cosine Similarity</div>
+              <div class="model-subtitle">Baseline Lexical Matcher (scikit-learn)</div>
+            </div>
+            <span class="model-badge badge-baseline">Baseline ATS</span>
+          </div>
+
+          <div class="score-display">
+            <span class="score-number" id="val-tfidf">--</span>
+            <span class="score-status" id="desc-tfidf" style="color: var(--warning);">Evaluating...</span>
+          </div>
+
+          <div class="progress-bar-bg">
+            <div class="progress-bar-val bar-baseline" id="bar-tfidf"></div>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted);">
+            Matches exact shared dictionary terms. Penalizes resumes when candidates express skills using alternate synonyms.
+          </p>
+        </div>
+
+        <!-- Proposed Model Card -->
+        <div class="score-card primary-model">
+          <div class="model-header">
+            <div>
+              <div class="model-title">Sentence-Transformers (MiniLM)</div>
+              <div class="model-subtitle">Contextual Embeddings (384-dimensional)</div>
+            </div>
+            <span class="model-badge badge-primary">Proposed Model</span>
+          </div>
+
+          <div class="score-display">
+            <span class="score-number" id="val-semantic">--</span>
+            <span class="score-status" id="desc-semantic" style="color: var(--primary);">Evaluating...</span>
+          </div>
+
+          <div class="progress-bar-bg">
+            <div class="progress-bar-val bar-primary" id="bar-semantic"></div>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted);">
+            Maps variable-length sentences into a continuous dense space. Accurately links conceptual equivalents across different wording.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Comparative Analysis Box -->
+      <div class="analysis-card">
+        <div class="analysis-title">Comparative Analysis & Evaluation Diagnostic</div>
+        <div class="analysis-body" id="text-explanation">
+          Running comparison...
+        </div>
+        <div class="delta-callout" id="box-delta">
+          <b>Key Finding:</b> Loading test results...
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    let currentMode = 'text';
+
+    function setTab(mode) {
+      currentMode = mode;
+      document.getElementById('tab-text').classList.toggle('active', mode === 'text');
+      document.getElementById('tab-files').classList.toggle('active', mode === 'files');
+      document.getElementById('section-text').style.display = (mode === 'text') ? 'grid' : 'none';
+      document.getElementById('section-files').style.display = (mode === 'files') ? 'grid' : 'none';
+    }
+
+    function fileChosen(type) {
+      const input = document.getElementById(`file-${type}`);
+      const pill = document.getElementById(`label-${type}-file`);
+      if (input.files && input.files[0]) {
+        pill.textContent = `Selected: ${input.files[0].name}`;
+        pill.style.display = 'inline-block';
+      }
+    }
+
+    // Benchmark Profiles
+    const TECHNOVA_JOB_DESC = `COMPANY: TechNova Solutions
+ROLE: Software Development Intern
+LOCATION: Bengaluru, India (Hybrid)
+
+ABOUT THE ROLE:
+We are looking for a Software Development Intern to join our engineering team. You will work closely with senior developers to build features, fix bugs, and contribute to real products.
+
+RESPONSIBILITIES:
+- Build and maintain web application features using modern frameworks
+- Write backend code that connects to databases and external services
+- Collaborate with a small team to plan, build, and ship features on schedule
+- Participate in code reviews and debugging sessions with other engineers
+
+REQUIRED SKILLS:
+- Proficiency in Python or JavaScript
+- Basic understanding of HTML and CSS for web development
+- Familiarity with Git version control
+- Understanding of how applications connect to databases
+- Teamwork and problem-solving skills`;
+
+    const ADITYA_SIMPLE_RESUME = `ADITYA SHARMA — B.Tech Computer Science (2022-2026)
+OBJECTIVE: Seeking Software Development Internship to apply coding skills.
+
+SKILLS: Python, JavaScript, HTML, CSS, Git, basic SQL, teamwork.
+
+EXPERIENCE & PROJECTS:
+- Campus Coding Club: Built a website using HTML/CSS/JavaScript. Worked with a team of 4 people.
+- College Hackathon: Led a team of 5 people to build a simple app in 24 hours. Wrote the backend code that connected the app to a database.
+- Expense Tracker: Built a simple app to track daily spending using Python and saved data to a file.`;
+
+    const ADITYA_SYNONYM_RESUME = `ADITYA SHARMA — Bachelor of Technology in Computer Science (2022-2026)
+OBJECTIVE: Pursuing a Software Engineering Internship to leverage technical proficiency.
+
+SKILLS: Python, JavaScript, HTML, CSS, Version Control (Git), foundational relational database knowledge, cross-functional collaboration.
+
+EXPERIENCE & PROJECTS:
+- Campus Coding Club: Engineered a compact web platform utilizing HTML/CSS/JavaScript. Collaborated within a four-member squad to deliver on time.
+- College Hackathon: Spearheaded a five-member cohort to develop a lightweight application within a 24-hour sprint. Authored the server-side logic that interfaced the application with a data repository.
+- Expenditure Monitoring Application: Constructed a lightweight utility to log daily expenditures using Python and persisted data for subsequent review.`;
+
+    const SWE_SAMPLE_RESUME = `John Doe — Software Engineer
+Passionate software developer with 3 years experience. Led a team of 5 engineers to deliver customer dashboard on time. Strong background in Python programming, cloud computing, and REST APIs. Built APIs serving 10,000+ daily users and deployed machine learning recommendation models.`;
+
+    const SWE_SAMPLE_JD = `Backend Python Developer at InnovateTech Solutions
+Looking for skilled Python developer with experience in API development, AWS cloud infrastructure, and agile teams. Requirements: 2+ years Python experience, SQL databases, machine learning concepts, and team collaboration skills.`;
+
+    function loadAdityaSimple() {
+      setTab('text');
+      document.getElementById('input-resume').value = ADITYA_SIMPLE_RESUME;
+      document.getElementById('input-job').value = TECHNOVA_JOB_DESC;
+      runMatching();
+    }
+
+    function loadAdityaSynonyms() {
+      setTab('text');
+      document.getElementById('input-resume').value = ADITYA_SYNONYM_RESUME;
+      document.getElementById('input-job').value = TECHNOVA_JOB_DESC;
+      runMatching();
+    }
+
+    function loadDefaultSample() {
+      setTab('text');
+      document.getElementById('input-resume').value = SWE_SAMPLE_RESUME;
+      document.getElementById('input-job').value = SWE_SAMPLE_JD;
+      runMatching();
+    }
+
+    async function runMatching() {
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.innerHTML = `<span class="spinner-sm"></span> <span>Executing Models...</span>`;
+
+      try {
+        let response;
+        if (currentMode === 'text') {
+          const resText = document.getElementById('input-resume').value.trim();
+          const jobText = document.getElementById('input-job').value.trim();
+
+          if (!resText || !jobText) {
+            alert('Please supply both resume and job description text.');
+            btn.disabled = false;
+            btn.innerHTML = `<span>Run Comparison</span>`;
+            return;
+          }
+
+          response = await fetch('/match', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ resume_text: resText, job_text: jobText })
+          });
+        } else {
+          const resFile = document.getElementById('file-resume').files[0];
+          const jobFile = document.getElementById('file-job').files[0];
+
+          if (!resFile || !jobFile) {
+            alert('Please select both resume and job description files (.pdf, .docx, or .txt).');
+            btn.disabled = false;
+            btn.innerHTML = `<span>Run Comparison</span>`;
+            return;
+          }
+
+          const fd = new FormData();
+          fd.append('resume_file', resFile);
+          fd.append('job_file', jobFile);
+
+          response = await fetch('/match-files', {
+            method: 'POST',
+            body: fd
+          });
+        }
+
+        if (!response.ok) {
+          const err = await response.json();
+          throw new Error(err.detail || 'Inference failed');
+        }
+
+        const result = await response.json();
+        showResults(result);
+
+      } catch (e) {
+        alert('Error: ' + e.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<span>Run Comparison</span>`;
+      }
+    }
+
+    function showResults(data) {
+      const panel = document.getElementById('results-panel');
+      panel.style.display = 'flex';
+
+      const tfidfPct = Math.round(data.tfidf_score * 100);
+      const semPct = Math.round(data.embedding_score * 100);
+
+      // Update Hiring Qualification Decision Banner
+      const decisionCard = document.getElementById('decision-banner');
+      const decisionBadge = document.getElementById('decision-badge');
+      const decisionStatus = document.getElementById('decision-status');
+      const decisionMsg = document.getElementById('decision-message');
+
+      const status = data.status || (semPct >= 60 ? 'SELECTED' : (semPct >= 48 ? 'BORDERLINE' : 'NOT_SELECTED'));
+      const badge = data.qualification_badge || (status === 'SELECTED' ? 'QUALIFIED & SHORTLISTED' : (status === 'BORDERLINE' ? 'BORDERLINE / REVIEW' : 'NOT SELECTED'));
+      const msg = data.selection_message || (status === 'SELECTED'
+        ? `🎉 Candidate Matched & Shortlisted! (Score: ${semPct}% >= 60% threshold). The profile demonstrates the necessary technical competencies and is officially selected for the technical interview.`
+        : (status === 'BORDERLINE'
+          ? `⚠️ Candidate Borderline (Score: ${semPct}%). The profile demonstrates partial overlap with requirements. Recommended for manual recruiter review.`
+          : `❌ Candidate Not Selected (Score: ${semPct}% < 60% cut-off). The profile lacks critical competencies required for this role.`));
+
+      decisionCard.className = 'decision-card ' + (status === 'SELECTED' ? 'status-selected' : (status === 'BORDERLINE' ? 'status-borderline' : 'status-rejected'));
+      decisionBadge.textContent = badge;
+      decisionStatus.textContent = status === 'SELECTED' ? 'Decision: Shortlisted for Interview' : (status === 'BORDERLINE' ? 'Decision: Placed on Hold for Review' : 'Decision: Application Rejected');
+      decisionMsg.textContent = msg;
+
+      document.getElementById('val-tfidf').textContent = `${tfidfPct}%`;
+      document.getElementById('val-semantic').textContent = `${semPct}%`;
+
+      document.getElementById('desc-tfidf').textContent = getQualitativeLabel(tfidfPct, 'tfidf');
+      document.getElementById('desc-semantic').textContent = getQualitativeLabel(semPct, 'semantic');
+
+      // Update Bars
+      setTimeout(() => {
+        document.getElementById('bar-tfidf').style.width = `${tfidfPct}%`;
+        document.getElementById('bar-semantic').style.width = `${semPct}%`;
+      }, 50);
+
+      // Explanation
+      document.getElementById('text-explanation').textContent = data.explanation;
+
+      // Delta Callout
+      const diff = semPct - tfidfPct;
+      const deltaBox = document.getElementById('box-delta');
+      if (diff > 5) {
+        deltaBox.innerHTML = `<b>Empirical Finding:</b> Sentence Embeddings outperformed keyword matching by <b>+${diff}%</b>. The candidate's qualifications were semantically identified despite vocabulary divergence that penalized the TF-IDF baseline.`;
+      } else if (diff < -5) {
+        deltaBox.innerHTML = `<b>Empirical Finding:</b> TF-IDF scored higher by <b>+${Math.abs(diff)}%</b> due to heavy lexical repetition of target job keywords.`;
+      } else {
+        deltaBox.innerHTML = `<b>Empirical Finding:</b> Both models yielded aligned similarity ratings within a <b>${Math.abs(diff)}%</b> margin.`;
+      }
+
+      panel.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function getQualitativeLabel(pct, model) {
+      if (model === 'tfidf') {
+        if (pct >= 40) return 'High Vocabulary Overlap';
+        if (pct >= 20) return 'Moderate Vocabulary Overlap';
+        return 'Low Vocabulary Overlap';
+      } else {
+        if (pct >= 65) return 'Strong Semantic Alignment';
+        if (pct >= 45) return 'Moderate Semantic Relevance';
+        return 'Weak Semantic Relevance';
+      }
+    }
+  </script>
+
+</body>
+</html>

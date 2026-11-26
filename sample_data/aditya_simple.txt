@@ -1,0 +1,41 @@
+ADITYA SHARMA
+Email: aditya.sharma@email.com | Phone: +91-9876543210 | LinkedIn: linkedin.com/in/adityasharma
+Location: Delhi NCR, India
+
+OBJECTIVE
+Computer science student seeking a Software Development Internship to apply my coding skills and learn from real-world projects.
+
+EDUCATION
+B.Tech in Computer Science
+XYZ University — 2022 to 2026
+CGPA: 8.2 / 10
+
+SKILLS
+Programming Languages: Python, JavaScript, C++
+Web Technologies: HTML, CSS
+Tools: Git, basic SQL
+Other: Problem solving, teamwork
+
+EXPERIENCE
+Member, Campus Coding Club — Jan 2024 to Present
+- Built a small website for club events using HTML, CSS, and JavaScript
+- Helped other students fix bugs in their code during weekly sessions
+- Worked with a team of 4 people to finish a group project on time
+
+Participant, College Hackathon — Aug 2024
+- Led a team of 5 people to build a simple app in 24 hours
+- Wrote the backend code that connected the app to a database
+- Presented the finished project to judges
+
+PROJECTS
+Personal Portfolio Website
+- Made a website to show my projects using HTML and CSS
+- Put it online so people can see it
+
+Expense Tracker App
+- Built a simple app to track daily spending using Python
+- Saved data in a file so it could be checked later
+
+CERTIFICATIONS
+- Python for Everybody (Coursera)
+- Git and GitHub Basics (Udemy)

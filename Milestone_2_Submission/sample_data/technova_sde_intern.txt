@@ -1,0 +1,44 @@
+COMPANY: TechNova Solutions
+ROLE: Software Development Intern
+LOCATION: Bengaluru, India (Hybrid)
+DURATION: 6 months
+
+ABOUT THE COMPANY
+TechNova Solutions builds web and mobile products for early-stage startups. We work in
+small, fast-moving teams and value people who can pick up new tools quickly and take
+ownership of what they build.
+
+ROLE OVERVIEW
+We are looking for a Software Development Intern to join our engineering team. You will
+work closely with senior developers to build features, fix bugs, and contribute to real
+products used by our clients.
+
+RESPONSIBILITIES
+- Build and maintain web application features using modern frameworks
+- Write backend code that connects to databases and external services
+- Collaborate with a small team to plan, build, and ship features on schedule
+- Participate in code reviews and debugging sessions with other engineers
+- Present progress and technical decisions to the team during weekly syncs
+
+REQUIRED SKILLS
+- Proficiency in Python or JavaScript
+- Basic understanding of HTML and CSS for web development
+- Familiarity with version control systems such as Git
+- Understanding of how applications connect to and use databases
+- Strong problem-solving and debugging skills
+
+PREFERRED (NOT MANDATORY)
+- Experience working in a team environment on a shared codebase
+- Experience leading or coordinating a small group on a project
+- Exposure to SQL or other database query languages
+- Prior participation in hackathons or coding competitions
+
+WHAT WE EXPECT FROM CANDIDATES
+- Ability to explain your own project work clearly, including decisions you made and why
+- Comfort working with some ambiguity — not every task will have a detailed spec
+- Willingness to ask questions and learn tools you haven't used before
+- Reliability — meeting deadlines and communicating early if something is blocked
+
+EVALUATION CRITERIA (INTERNAL USE)
+Candidates will be shortlisted based on: relevant technical skills, evidence of hands-on
+project or team experience, and clarity of communication in the application material.

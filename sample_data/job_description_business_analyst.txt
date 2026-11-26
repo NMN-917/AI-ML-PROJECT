@@ -1,0 +1,18 @@
+Job Title: IT Business Analyst / Scrum Master
+
+Company: FinTech Solutions Group
+
+About the Role:
+We are looking for a skilled IT Business Analyst to bridge the gap between business stakeholders and technical engineering teams.
+
+Responsibilities:
+- Gather, analyze, and document business and functional requirements (BRDs, FRDs, User Stories)
+- Facilitate Scrum ceremonies including Sprint Planning, Daily Standups, and Sprint Retrospectives
+- Conduct User Acceptance Testing (UAT), gap analysis, and workflow process mapping
+- Collaborate with developers and QA engineers to ensure delivered software meets client expectations
+
+Requirements:
+- 5+ years of experience as an IT Business Analyst or Systems Analyst in Banking or Healthcare
+- Certified Scrum Master (CSM) or proven track record in Agile / Scrum methodologies
+- Proficiency in Jira, Confluence, Visio, and SQL queries for data verification
+- Exceptional stakeholder communication and team leadership skills

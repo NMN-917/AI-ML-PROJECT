@@ -1,0 +1,41 @@
+ADITYA SHARMA
+Email: aditya.sharma@email.com | Phone: +91-9876543210 | LinkedIn: linkedin.com/in/adityasharma
+Location: Delhi NCR, India
+
+OBJECTIVE
+Computer science undergraduate pursuing a Software Engineering Internship to leverage my technical proficiency and gain exposure to real-world development practices.
+
+EDUCATION
+Bachelor of Technology in Computer Science
+XYZ University — 2022 to 2026
+CGPA: 8.2 / 10
+
+SKILLS
+Programming Languages: Python, JavaScript, C++
+Web Technologies: HTML, CSS
+Tools: Version Control (Git), foundational relational database knowledge
+Other: Analytical thinking, cross-functional collaboration
+
+EXPERIENCE
+Contributor, Campus Coding Club — Jan 2024 to Present
+- Engineered a compact web platform for club gatherings utilizing HTML, CSS, and JavaScript
+- Assisted fellow students in diagnosing and resolving software defects during weekly collaborative sessions
+- Collaborated within a four-member squad to deliver a joint initiative within the stipulated timeline
+
+Contestant, College Hackathon — Aug 2024
+- Spearheaded a five-member cohort to develop a lightweight application within a 24-hour sprint
+- Authored the server-side logic that interfaced the application with a data repository
+- Delivered a project walkthrough to the evaluation panel
+
+PROJECTS
+Personal Portfolio Site
+- Developed a digital showcase to exhibit my work using HTML and CSS
+- Deployed it to the web for public visibility
+
+Expenditure Monitoring Application
+- Constructed a lightweight utility to log daily expenditures using Python
+- Persisted data to a file for subsequent review
+
+CERTIFICATIONS
+- Python for Everybody (Coursera)
+- Git and GitHub Fundamentals (Udemy)

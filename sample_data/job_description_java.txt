@@ -1,0 +1,25 @@
+Job Title: Senior Java Developer
+
+Company: Enterprise Cloud Systems
+
+About the Role:
+We are seeking an experienced Senior Java Developer to build scalable enterprise microservices and distributed backend systems. You will collaborate with engineering teams to build robust cloud-native software.
+
+Responsibilities:
+- Design, develop, and maintain enterprise backend microservices using Java and Spring Boot
+- Implement scalable RESTful APIs and integrate with relational SQL databases (PostgreSQL, Oracle)
+- Deploy containerized applications to AWS cloud infrastructure using Docker and Kubernetes
+- Lead sprint planning sessions and collaborate with cross-functional agile teams
+- Conduct automated unit testing with JUnit and participate in peer code reviews
+
+Requirements:
+- 5+ years of hands-on software engineering experience with Core Java and J2EE
+- Strong expertise with Spring Boot, Spring Data, and Hibernate ORM
+- Solid background in SQL database design and query optimization
+- Proven experience in team management and agile Scrum methodologies
+- Hands-on experience with cloud infrastructure (AWS preferred) and containerization
+
+Nice to Have:
+- Familiarity with CI/CD automation pipelines
+- Knowledge of message brokers (Kafka or RabbitMQ)
+- Exposure to microservices architecture and distributed caching

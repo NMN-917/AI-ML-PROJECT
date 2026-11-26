@@ -1,0 +1,26 @@
+Candidate Name: Rohit Verma
+Role: Senior Java Developer
+Email: rohit.verma@example.com
+
+PROFESSIONAL SUMMARY:
+Senior Java Developer with 6+ years of software engineering experience developing enterprise backend microservices using Java and Spring Boot. Skilled in building RESTful APIs and connecting them with relational SQL databases. Experienced in deploying containerized applications to AWS cloud infrastructure using Docker and Kubernetes. Proven track record in team management and agile Scrum methodologies.
+
+TECHNICAL SKILLS:
+- Languages: Core Java, J2EE, SQL
+- Frameworks: Spring Boot, Spring MVC, Hibernate ORM
+- Cloud & DevOps: AWS, Docker, Kubernetes, CI/CD
+- Testing: JUnit, Mockito
+- Methodologies: Agile Scrum, Team Management, Code Reviews
+
+PROFESSIONAL EXPERIENCE:
+Senior Software Engineer | CloudTech Corp (2021 - Present)
+- Designed, developed, and maintained enterprise backend microservices using Java and Spring Boot.
+- Implemented scalable RESTful APIs and integrated with relational SQL databases like PostgreSQL and Oracle.
+- Deployed containerized applications to AWS cloud infrastructure using Docker and Kubernetes.
+- Handled team management for a group of 6 junior engineers and led daily agile Scrum meetings.
+- Conducted automated unit testing with JUnit and participated in regular peer code reviews.
+
+Software Developer | DataSoft Solutions (2018 - 2021)
+- Developed enterprise Java applications utilizing Spring framework and Hibernate.
+- Wrote complex SQL queries and optimized database schema performance.
+- Automated testing routines using JUnit and streamlined deployment scripts.

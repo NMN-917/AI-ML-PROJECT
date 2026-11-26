@@ -1,0 +1,13 @@
+Candidate Name: Ananya Sen
+Role: Product Consultant & Agile Coach
+Email: ananya.sen@example.com
+
+PROFESSIONAL SUMMARY:
+Product Consultant and Agile Coach with 6 years guiding client deliverables in Financial Services and Medical domains. Adept at stakeholder interview elicitation, synthesizing client feature specifications, and translating operational needs into actionable engineering tasks. Experienced orchestrating iterative team alignments and leading pre-release customer verification phases.
+
+EXPERIENCE:
+Product Consultant | FinCorp Global (2020 - Present)
+- Elicited, distilled, and structured operational specifications into detailed feature narratives.
+- Moderated recurring collaborative planning intervals, daily synchronization check-ins, and post-iteration reviews.
+- Orchestrated end-user acceptance validations and comparative discrepancy evaluations for executive partners.
+- Modeled procedural process lifecycles and validated backend records via database queries utilizing tracking dashboards.
